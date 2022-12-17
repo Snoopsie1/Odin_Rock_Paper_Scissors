@@ -7,9 +7,13 @@ body {
     margin: 0;
 }
 
+p {
+    text-align: center;
+}
+
 .container {
     flex-direction: column;
-    margin-top: 50%;
+    margin-top: 25%;
 }
 
 .row {
@@ -17,4 +21,9 @@ body {
     gap: 5px;
     justify-content: center;
     align-items: center;
+}
+
+.row p {
+    margin-right: 40px;
+    margin-left: 40px;
 }

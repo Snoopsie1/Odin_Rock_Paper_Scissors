@@ -59,12 +59,22 @@ function game(playerSelection) {
         var result = playRound(playerSelection, getComputerChoice());
         if (result.slice(0,5) == "You w") {
             playerScore++; 
-            console.log(result);
+            updateScore("p_score", playerScore);
+            addCode(result);
         } else {
             computerScore++;
-            console.log(result);
+            updateScore("c_score", computerScore);
+            addCode(result);
         }
     }
+}
+
+function addCode(result) {
+    document.getElementById("output").innerHTML += `<p>${result}</p>`;
+}
+
+function updateScore(selector, score){
+    document.getElementById(selector).innerHTML = score;
 }
 
 const playerChoice = "rock";
