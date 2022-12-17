@@ -51,12 +51,12 @@ Call the playRound function inside of this one
 to lay a 5 round game that keeps score and 
 reports a winner or loser at the end. 
 */
-function game(playerSelection, computerSelection) {
+function game(playerSelection) {
     var playerScore = 0;
     var computerScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        var result = playRound(playerSelection, computerSelection);
+        var result = playRound(playerSelection, getComputerChoice());
         if (result.slice(0,5) == "You w") {
             playerScore++; 
             console.log(result);
@@ -64,7 +64,6 @@ function game(playerSelection, computerSelection) {
             computerScore++;
             console.log(result);
         }
-        console.log(playerScore);
     }
 }
 
