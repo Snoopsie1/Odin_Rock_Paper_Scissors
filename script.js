@@ -46,3 +46,28 @@ function playRound(playerSelection, computerSelection){
         return `You lose! ${computerSelection} beats ${loweredPlayerSelection}`;
     }
 }
+/* Write a new function called game()
+Call the playRound function inside of this one
+to lay a 5 round game that keeps score and 
+reports a winner or loser at the end. 
+*/
+function game(playerSelection, computerSelection) {
+    var playerScore = 0;
+    var computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        var result = playRound(playerSelection, computerSelection);
+        if (result.slice(0,5) == "You w") {
+            playerScore++; 
+            console.log(result);
+        } else {
+            computerScore++;
+            console.log(result);
+        }
+        console.log(playerScore);
+    }
+}
+
+const playerChoice = "rock";
+const computerChoice = getComputerChoice();
+game(playerChoice, computerChoice);
