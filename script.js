@@ -61,6 +61,8 @@ function game(playerSelection) {
             playerScore++; 
             updateScore("p_score", playerScore);
             addCode(result);
+        } else if (result == "Tie"){
+            addCode(result);
         } else {
             computerScore++;
             updateScore("c_score", computerScore);
@@ -77,6 +79,30 @@ function updateScore(selector, score){
     document.getElementById(selector).innerHTML = score;
 }
 
-const playerChoice = "rock";
-const computerChoice = getComputerChoice();
-game(playerChoice, computerChoice);
+//var playerChoice = "rock";
+//game(playerChoice);
+
+// For player interactivity
+var playerScore = 0;
+var computerScore = 0;
+
+var buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playerSelection = button.id;
+        var result = playRound(playerSelection, getComputerChoice());
+        
+        if (result.slice(0,5) == "You w") {
+            playerScore++; 
+            updateScore("p_score", playerScore);
+            addCode(result);
+        } else if (result == "Tie"){
+            addCode(result);
+        } else {
+            computerScore++;
+            updateScore("c_score", computerScore);
+            addCode(result);
+        }
+    });
+});
