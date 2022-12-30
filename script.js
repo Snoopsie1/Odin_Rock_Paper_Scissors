@@ -2,6 +2,8 @@
 that will randomly return either:
 'Rock', 'Paper', or 'Scissors'
 */
+//To see how many results there is
+var resultsLength = 0;
 // My plan: 
 // 1. Make a random num generator so the computer
 // chooses random numbers.
@@ -72,11 +74,23 @@ function game(playerSelection) {
 }
 
 function addCode(result) {
-    document.getElementById("output").innerHTML += `<p>${result}</p>`;
+    document.getElementById("output").innerHTML += `<p class="result" id ="${resultsLength}">${result}</p>`;
+    resultsLength++;
 }
 
 function updateScore(selector, score){
     document.getElementById(selector).innerHTML = score;
+}
+
+function cycleResults() {
+    var resultsHTML = document.getElementsByClassName("result");
+    var results = Array.prototype.slice.call(resultsHTML);
+    if (resultsLength >= 10) {
+        document.getElementsByClassName("result")[0].remove();
+        for (const newId of Array(10).keys()) {
+            results[newId].id = newId;
+        }
+    }
 }
 
 //var playerChoice = "rock";
@@ -87,6 +101,8 @@ var playerScore = 0;
 var computerScore = 0;
 
 var buttons = document.querySelectorAll("button");
+
+
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -104,5 +120,9 @@ buttons.forEach((button) => {
             updateScore("c_score", computerScore);
             addCode(result);
         }
+        cycleResults();
     });
 });
+
+
+
